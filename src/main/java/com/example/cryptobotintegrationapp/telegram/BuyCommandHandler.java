@@ -6,6 +6,7 @@ import com.example.cryptobotintegrationapp.integration.cryptobot.data.CreateInvo
 import com.example.cryptobotintegrationapp.integration.cryptobot.data.Invoice;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
 @Component
@@ -19,11 +20,12 @@ public class BuyCommandHandler implements CommandHandler {
     }
 
     @Override
-    public String handleCommand(Message message) {
+    public SendMessage handleCommand(Message message) {
         Long chatId = message.getChatId();
         CreateInvoiceRequest request = new CreateInvoiceRequest(Asset.TON, "0.01", "test", null,
                 null, null, chatId.toString(), false, false, null);
         Invoice createdInvoice = cryptoBotClient.createInvoice(request);
-        return createdInvoice.getPayUrl();
+        String payUrl = createdInvoice.getPayUrl();
+        return new SendMessage(message.getChatId().toString(), payUrl);
     }
 }

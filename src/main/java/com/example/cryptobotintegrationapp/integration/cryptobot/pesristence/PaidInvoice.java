@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PaidInvoice {
-    private Long invoiceId;
+    private String invoiceId;
     private Long chatId;
 }

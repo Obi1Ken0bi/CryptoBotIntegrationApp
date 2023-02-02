@@ -32,7 +32,7 @@ public class WebHookController {
         if (hash.equals(signature)) {
             String chatId = update.getPayload().getPayload();
             exampleShopBot.sendInvoicePaid(chatId, update.getPayload().getDescription());
-            paidInvoiceDao.save(new PaidInvoice(update.getPayload().getInvoiceId(), Long.parseLong(chatId)));
+            paidInvoiceDao.save(new PaidInvoice(update.getPayload().getInvoiceId().toString(), Long.parseLong(chatId)));
 
         }
     }
