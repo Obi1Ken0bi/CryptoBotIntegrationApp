@@ -22,9 +22,12 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("org.telegram:telegrambots:6.4.0")
     implementation("org.telegram:telegrambots-abilities:5.3.0")
     implementation("com.google.guava:guava:31.1-jre")
+    implementation("org.postgresql:postgresql")
+    implementation("org.flywaydb:flyway-core")
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
